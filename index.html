@@ -1,51 +1,35 @@
 <!DOCTYPE HTML>
 <html>
-
 <head>
-    <title>Text Shrink</title>
-    <style>
-        p {
-            position: absolute; 
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-    </style>
+    <title>Program-4</title>
 </head>
-
 <body>
-    <p id="demo"></p>
-    <script>
-        var var1 = setInterval(inTimer, 500);
-        var fs = 5;   //font size
-        var ids = document.getElementById("demo");
-
-        function inTimer()    
+    <script type="text/javascript">
+        var str = prompt("Enter the Input", "");
+        if (!(isNaN(str))) //isNaN means is Not a Number
         {
-            ids.innerHTML = 'TEXT GROWING';
-            ids.setAttribute('style', "font-size: " + fs + "px; color: red");
-            fs += 5;   
-            if (fs >= 50) 
-            {
-                clearInterval(var1);   //paused
-                var2 = setInterval(deTimer, 500);
+            var num, rev = 0, remainder;
+            num = parseInt(str);
+            while (num != 0) {
+                remainder = num % 10;
+                num = parseInt(num / 10);
+                rev = rev * 10 + remainder;
             }
+            alert("Reverse of " + str + " is " + rev);
         }
-
-        function deTimer() //fs = 50px
-        {
-            fs -= 5;
-            ids.innerHTML = 'TEXT SHRINKING';
-            ids.setAttribute('style', "font-size: " + fs + "px; color: blue");
-            if (fs == 5) 
+        else {
+            str = str.toUpperCase();
+            for (var i = 0; i < str.length; i++) //0,1,2,3
             {
-                clearInterval(var2); //paused
-                var1 = setInterval(inTimer, 500);
+                var chr = str.charAt(i);
+                if (chr == 'A' || chr == 'E' || chr == 'I' || chr == 'O' || chr == 'U')
+                    break;
             }
+            if (i < str.length)
+                alert("The position of the left most vowel is " + (i + 1));
+            else
+                alert("No vowel found in the entered string");
         }
-
     </script>
 </body>
-
 </html>
